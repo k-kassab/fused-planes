@@ -42,7 +42,7 @@ pip install -r requirements.txt
 
 ### Data
 ShapeNet data can be requested from the [offical website](https://shapenet.org).
-Basel Faces data is coming soon.
+Basel Faces data can be found at the [following link](https://huggingface.co/datasets/k-kassab/fused-planes-data).
 
 ### Define data directory
 You must specify the path to the fused-planes-data by defining the environment variable DATA_DIR
