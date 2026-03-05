@@ -1,10 +1,10 @@
-# Scaled Inverse Graphics: Efficiently Learning Large Sets of 3D Scenes
+# Fused-Planes: Why Train a Thousand Tri-Planes When You Can Share?
 
 **Official paper implementation**
-> Karim Kassab*, Antoine Schnepf*, Jean-Yves Franceschi, Laurent Caraffa, Flavian Vasile, Jeremie Mary, Andrew Comport, Valérie Gouet-Brunet (* indicates equal contribution)<br>
-| [Project Page](https://scaled-ig.github.io) | [Full Paper](https://arxiv.org/abs/2410.23742v1) |<br>
+> Karim Kassab*, Antoine Schnepf*, Jean-Yves Franceschi, Laurent Caraffa, Flavian Vasile, Jeremie Mary, Andrew Comport $^\dagger$, Valérie Gouet-Brunet $^\dagger$ (* $^\dagger$ indicate equal contribution)<br>
+| [Project Page](https://fused-planes.github.io) | [Full paper](https://openreview.net/forum?id=bAG7lS1AUL) | [Preprint](https://arxiv.org/abs/2410.23742) |<br>
 
-<b>Abstract:</b> *While the field of inverse graphics has been witnessing continuous growth, techniques devised thus far predominantly focus on learning individual scene representations. In contrast, learning large sets of scenes has been a considerable bottleneck in NeRF developments, as repeatedly applying inverse graphics on a sequence of scenes, though essential for various applications, remains largely prohibitive in terms of resource costs. We introduce a framework termed "scaled inverse graphics", aimed at efficiently learning large sets of scene representations, and propose a novel method to this end. It operates in two stages: (i) training a compression model on a subset of scenes, then (ii) training NeRF models on the resulting smaller representations, thereby reducing the optimization space per new scene. In practice, we compact the representation of scenes by learning NeRFs in a latent space to reduce the image resolution, and sharing information across scenes to reduce NeRF representation complexity. We experimentally show that our method presents both the lowest training time and memory footprint in scaled inverse graphics compared to other methods applied independently on each scene.*
+<b>Abstract:</b> *Tri-Planar NeRFs enable the application of powerful 2D vision models for 3D tasks, by representing 3D objects using 2D planar structures. This has made them the prevailing choice to model large collections of 3D objects. However, training Tri-Planes to model such large collections is computationally intensive and remains largely inefficient. This is because the current approaches independently train one Tri-Plane per object, hence overlooking structural similarities in large classes of objects. In response to this issue, we introduce Fused-Planes, a novel object representation that improves the resource efficiency of Tri-Planes when reconstructing object classes, all while retaining the same planar structure. Our approach explicitly captures structural similarities across objects through a latent space and a set of globally shared base planes. Each individual Fused-Planes is then represented as a decomposition over these base planes, augmented with object-specific features. Fused-Planes showcase state-of-the-art efficiency among planar representations, demonstrating $7.2 \times$ faster training and $3.2 \times$ lower memory footprint than Tri-Planes while maintaining rendering quality. An ultra-lightweight variant further cuts per-object memory usage by $1875 \times$ with minimal quality loss.*
 
 ![LatentScenes](assets/ls_videos.gif)
 
@@ -38,14 +38,14 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Download data
-(coming soon)
-Download and untar the data (about 26 GB).
+### Data
+ShapeNet data can be requested from the [offical website](https://shapenet.org).
+Basel Faces data is coming soon.
 
 ### Define data directory
-You must specify the path to the scaled-ig-data by defining the environment variable DATA_DIR
+You must specify the path to the fused-planes-data by defining the environment variable DATA_DIR
 ```
-export DATA_DIR=".../scaled-ig-data"
+export DATA_DIR=".../fused-planes-data"
 ```
 or by changing the variable ``DATA_DIR`` in igae/datasets/dataset.py .
 
@@ -80,10 +80,11 @@ Refer to the igae [README](igae/README.md) for more details.
 
 If you find this research project useful, please consider citing our work:
 ```
-@article{scaled-ig,
-        title={{Scaled Inverse Graphics: Efficiently Learning Large Sets of 3D Scenes}}, 
-        author={Karim Kassab and Antoine Schnepf and Jean-Yves Franceschi and Laurent Caraffa and Flavian Vasile and Jeremie Mary and Andrew Comport and Valérie Gouet-Brunet},
-        journal={arXiv preprint arXiv:2410.23742},
-        year={2024}
+@inproceedings{fused-planes,
+        title={{Fused-Planes: Why Train a Thousand Tri-Planes When You Can Share?}},
+        author={Karim Kassab and Antoine Schnepf and Jean-Yves Franceschi and Laurent Caraffa and Flavian Vasile and Jeremie Mary and Andrew I. Comport and Valerie Gouet-Brunet},
+        booktitle={The Fourteenth International Conference on Learning Representations},
+        year={2026},
+        url={https://openreview.net/forum?id=bAG7lS1AUL}
 }
 ```
