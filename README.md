@@ -1,5 +1,7 @@
 # Fused-Planes: Why Train a Thousand Tri-Planes When You Can Share?
 
+### ICLR 2026
+
 **Official paper implementation**
 > Karim Kassab*, Antoine Schnepf*, Jean-Yves Franceschi, Laurent Caraffa, Flavian Vasile, Jeremie Mary, Andrew Comport $^\dagger$, Valérie Gouet-Brunet $^\dagger$ (* $^\dagger$ indicate equal contribution)<br>
 | [Project Page](https://fused-planes.github.io) | [Full paper](https://openreview.net/forum?id=bAG7lS1AUL) | [Preprint](https://arxiv.org/abs/2410.23742) |<br>
